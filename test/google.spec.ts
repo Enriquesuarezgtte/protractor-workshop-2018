@@ -1,11 +1,14 @@
 import { browser } from "protractor";
 
-describe('This is the first example of protractor',()=>{
-  it('title test',()=>{
-    browser.ignoreSynchronization =true;
-    browser.get('http://www.google.com');
+describe('Given a SDET learning protractor', () => {
+  describe('when open Google page', () => {
+    beforeEach(() => {
+      browser.get('http://www.google.com');
+    });
 
-    expect(browser.getTitle()).toEqual('Google');
-  })
+    it('then should have a title', () => {
+      expect(browser.getTitle()).toEqual('Google');
+    });
+  });
 
 });
