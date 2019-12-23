@@ -25,12 +25,12 @@
   },
   "homepage": "https://github.com/Enriquesuarezgtte/protractor-workshop-2018#readme",
   "dependencies": {
-    "jasmine-spec-reporter": "^4.2.1",
     "protractor": "^5.4.2"
   },
   "devDependencies": {
     "@types/jasminewd2": "^2.0.8",
     "@types/node": "^12.12.19",
+    "jasmine-spec-reporter": "^4.2.1",
     "typescript": "^3.6.4"
   }
 }
