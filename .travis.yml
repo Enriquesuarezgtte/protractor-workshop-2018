@@ -1,4 +1,4 @@
-dist: trusty
+os: windows
 addons:
   chrome: stable
 language: node_js
