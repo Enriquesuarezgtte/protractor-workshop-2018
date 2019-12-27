@@ -1,4 +1,4 @@
-import { browser } from "protractor";
+import { browser } from 'protractor';
 
 describe('Given a SDET learning protractor 2019', () => {
   describe('when open Google page', () => {
