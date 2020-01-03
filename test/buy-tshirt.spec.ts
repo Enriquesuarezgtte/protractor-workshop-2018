@@ -1,4 +1,4 @@
-import { $, browser } from 'protractor';
+import { browser } from 'protractor';
 import {
   MenuContentPage,
   ProductListPage,
@@ -8,7 +8,8 @@ import {
   AddressStepPage,
   ShippingStepPage,
   PaymentStepPage,
-  BankPaymentPage
+  BankPaymentPage,
+  OrderResultPage
 } from '../src/page';
 
 describe('Buy a t-shirt', () => {
@@ -23,6 +24,7 @@ describe('Buy a t-shirt', () => {
   const shippingStepPage: ShippingStepPage = new ShippingStepPage();
   const paymentStepPage: PaymentStepPage = new PaymentStepPage();
   const bankPaymentPage: BankPaymentPage = new BankPaymentPage();
+  const orderResultPage: OrderResultPage = new OrderResultPage();
 
   beforeEach(() => {
     jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
@@ -57,7 +59,8 @@ describe('Buy a t-shirt', () => {
     await bankPaymentPage.confirmOrder();
     await (browser.sleep(3000));
 
-    await expect($('#center_column > div > p > strong').getText()).toBe('Your order on My Store is complete.');
+    await expect(await orderResultPage.getOrderResult())
+    .toBe('Your order on My Store is complete.');
 
   });
 });
