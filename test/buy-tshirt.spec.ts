@@ -59,7 +59,7 @@ describe('Buy a t-shirt', () => {
     await bankPaymentPage.confirmOrder();
     await (browser.sleep(3000));
 
-    await expect(await orderResultPage.getOrderResult())
+    await expect(orderResultPage.getOrderResult())
     .toBe('Your order on My Store is complete.');
 
   });
