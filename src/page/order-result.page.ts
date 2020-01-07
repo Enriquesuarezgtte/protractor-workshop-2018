@@ -1,4 +1,4 @@
-import { $, ElementFinder } from 'protractor';
+import { $, ElementFinder, browser, ExpectedConditions } from 'protractor';
 
 export class OrderResultPage {
   private orderResultAlert: ElementFinder;
@@ -8,6 +8,9 @@ export class OrderResultPage {
   }
 
   public async getOrderResult(): Promise<String> {
-    return await this.orderResultAlert.getText();
+    return browser.wait(ExpectedConditions.visibilityOf(this.orderResultAlert))
+      .then(() => {
+        return this.orderResultAlert.getText();
+      });
   }
 }

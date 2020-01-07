@@ -1,4 +1,4 @@
-import { $, ElementFinder } from 'protractor';
+import { $, ElementFinder, browser, ExpectedConditions } from 'protractor';
 
 export class ProductAddedModalPage {
   private tShirtCartModal: ElementFinder;
@@ -8,7 +8,8 @@ export class ProductAddedModalPage {
   }
 
   public async goToShoppingCartSummary(): Promise<void> {
-    await this.tShirtCartModal.click();
+    browser.wait(ExpectedConditions.elementToBeClickable(this.tShirtCartModal))
+      .then(() => this.tShirtCartModal.click());
   }
 
 }

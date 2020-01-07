@@ -1,4 +1,4 @@
-import { $, ElementFinder } from 'protractor';
+import { $, ElementFinder, browser, ExpectedConditions } from 'protractor';
 
 export class ShippingStepPage {
   private termsOfServiceCheck: ElementFinder;
@@ -10,10 +10,12 @@ export class ShippingStepPage {
   }
 
   public async acceptTermsOfService(): Promise<void> {
-    await this.termsOfServiceCheck.click();
+    browser.wait(ExpectedConditions.presenceOf(this.termsOfServiceCheck))
+      .then(() => this.termsOfServiceCheck.click());
   }
 
   public async goToPaymentStepPage(): Promise<void> {
-    await this.shippingNavigation.click();
+    browser.wait(ExpectedConditions.elementToBeSelected(this.termsOfServiceCheck))
+      .then(() => this.shippingNavigation.click());
   }
 }

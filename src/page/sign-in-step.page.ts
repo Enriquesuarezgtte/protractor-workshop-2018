@@ -1,4 +1,4 @@
-import { $, ElementFinder } from 'protractor';
+import { $, ElementFinder, browser, ExpectedConditions } from 'protractor';
 
 export class SignInCardStepPage {
   private emailField: ElementFinder;
@@ -11,11 +11,17 @@ export class SignInCardStepPage {
     this.signInOption = $('#SubmitLogin > span');
   }
   public async sendEmailandPasswKeys(emailKey: string, passwordKey: string): Promise<void> {
-    await this.emailField.sendKeys(emailKey);
-    await this.passwordField.sendKeys(passwordKey);
+
+    browser.wait(ExpectedConditions.and(ExpectedConditions.presenceOf(this.emailField),
+                                        ExpectedConditions.presenceOf(this.passwordField)))
+      .then(() => {
+        this.emailField.sendKeys(emailKey);
+        this.passwordField.sendKeys(passwordKey);
+      });
   }
 
   public async signIn(): Promise<void> {
-    await this.signInOption.click();
+    browser.wait(ExpectedConditions.elementToBeClickable(this.signInOption))
+      .then(() => this.signInOption.click());
   }
 }
