@@ -6,8 +6,9 @@ export class OrderSummaryPage {
   constructor() {
     this.cartSummaryNavigation = $('.cart_navigation span');
   }
+
   public async goToLoginStep(): Promise<void> {
     await browser.wait(ExpectedConditions.elementToBeClickable(this.cartSummaryNavigation));
-    this.cartSummaryNavigation.click();
+    await this.cartSummaryNavigation.click();
   }
 }

@@ -9,6 +9,6 @@ export class BankPaymentPage {
 
   public async confirmOrder(): Promise<void> {
     await browser.wait(ExpectedConditions.elementToBeClickable(this.confirmOrderNavigation));
-    this.confirmOrderNavigation.click();
+    await this.confirmOrderNavigation.click();
   }
 }

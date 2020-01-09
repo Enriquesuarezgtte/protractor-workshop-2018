@@ -44,6 +44,5 @@ describe('Buy a t-shirt', () => {
     await paymentStepPage.payByCheck();
     await bankPaymentPage.confirmOrder();
     await expect(orderResultPage.getOrderResult()).toBe('Your order on My Store is complete.');
-
   });
 });

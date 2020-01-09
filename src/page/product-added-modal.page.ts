@@ -9,7 +9,7 @@ export class ProductAddedModalPage {
 
   public async goToShoppingCartSummary(): Promise<void> {
     await browser.wait(ExpectedConditions.elementToBeClickable(this.tShirtCartModal));
-    this.tShirtCartModal.click();
+    await this.tShirtCartModal.click();
   }
 
 }

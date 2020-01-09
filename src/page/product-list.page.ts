@@ -5,13 +5,12 @@ export class ProductListPage {
 
   constructor() {
     this.addToCartItem = $('#center_column a.button.ajax_add_to_cart_button.btn.btn-default');
-
   }
 
   public async addTshirtToCart(): Promise<void> {
     await browser.wait(
     ExpectedConditions.and(ExpectedConditions.titleIs('T-shirts - My Store')
     ,                      ExpectedConditions.elementToBeClickable(this.addToCartItem)));
-    this.addToCartItem.click();
+    await this.addToCartItem.click();
   }
 }

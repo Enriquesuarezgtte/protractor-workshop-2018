@@ -9,6 +9,6 @@ export class MenuContentPage {
 
   public async goToTshirtMenu(): Promise<void> {
     await browser.wait(ExpectedConditions.elementToBeClickable(this.tShirtMenu));
-    this.tShirtMenu.click();
+    await this.tShirtMenu.click();
   }
 }

@@ -9,6 +9,6 @@ export class OrderResultPage {
 
   public async getOrderResult(): Promise<String> {
     await browser.wait(ExpectedConditions.visibilityOf(this.orderResultAlert));
-    return this.orderResultAlert.getText();
+    return await this.orderResultAlert.getText();
   }
 }

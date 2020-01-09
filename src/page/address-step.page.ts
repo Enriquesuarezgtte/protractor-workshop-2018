@@ -9,8 +9,6 @@ export class AddressStepPage {
 
   public async goToShippingStep(): Promise<void> {
     await browser.wait(ExpectedConditions.elementToBeClickable(this.cartAddressNavigation));
-    this.cartAddressNavigation.click();
-
+    await this.cartAddressNavigation.click();
   }
-
 }
