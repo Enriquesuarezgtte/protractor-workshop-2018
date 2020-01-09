@@ -1,4 +1,4 @@
-import { $, ElementFinder } from 'protractor';
+import { $, ElementFinder, browser, ExpectedConditions } from 'protractor';
 
 export class OrderSummaryPage {
   private cartSummaryNavigation: ElementFinder;
@@ -6,7 +6,9 @@ export class OrderSummaryPage {
   constructor() {
     this.cartSummaryNavigation = $('.cart_navigation span');
   }
+
   public async goToLoginStep(): Promise<void> {
+    await browser.wait(ExpectedConditions.elementToBeClickable(this.cartSummaryNavigation));
     await this.cartSummaryNavigation.click();
   }
 }

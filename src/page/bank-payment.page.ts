@@ -1,4 +1,4 @@
-import { $, ElementFinder } from 'protractor';
+import { $, ElementFinder, browser, ExpectedConditions } from 'protractor';
 
 export class BankPaymentPage {
   private confirmOrderNavigation: ElementFinder;
@@ -8,6 +8,7 @@ export class BankPaymentPage {
   }
 
   public async confirmOrder(): Promise<void> {
+    await browser.wait(ExpectedConditions.elementToBeClickable(this.confirmOrderNavigation));
     await this.confirmOrderNavigation.click();
   }
 }
