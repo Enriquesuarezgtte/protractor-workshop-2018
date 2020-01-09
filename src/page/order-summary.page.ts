@@ -7,7 +7,7 @@ export class OrderSummaryPage {
     this.cartSummaryNavigation = $('.cart_navigation span');
   }
   public async goToLoginStep(): Promise<void> {
-    browser.wait(ExpectedConditions.elementToBeClickable(this.cartSummaryNavigation))
-      .then(() => this.cartSummaryNavigation.click());
+    await browser.wait(ExpectedConditions.elementToBeClickable(this.cartSummaryNavigation));
+    this.cartSummaryNavigation.click();
   }
 }

@@ -11,17 +11,14 @@ export class SignInCardStepPage {
     this.signInOption = $('#SubmitLogin > span');
   }
   public async sendEmailandPasswKeys(emailKey: string, passwordKey: string): Promise<void> {
-
-    browser.wait(ExpectedConditions.and(ExpectedConditions.presenceOf(this.emailField),
-                                        ExpectedConditions.presenceOf(this.passwordField)))
-      .then(() => {
-        this.emailField.sendKeys(emailKey);
-        this.passwordField.sendKeys(passwordKey);
-      });
+    await browser.wait(ExpectedConditions.and(ExpectedConditions.presenceOf(this.emailField),
+                                              ExpectedConditions.presenceOf(this.passwordField)));
+    this.emailField.sendKeys(emailKey);
+    this.passwordField.sendKeys(passwordKey);
   }
 
   public async signIn(): Promise<void> {
-    browser.wait(ExpectedConditions.elementToBeClickable(this.signInOption))
-      .then(() => this.signInOption.click());
+    await browser.wait(ExpectedConditions.elementToBeClickable(this.signInOption));
+    this.signInOption.click();
   }
 }

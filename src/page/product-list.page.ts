@@ -9,8 +9,9 @@ export class ProductListPage {
   }
 
   public async addTshirtToCart(): Promise<void> {
-    browser.wait(ExpectedConditions.and(ExpectedConditions.titleIs('T-shirts - My Store')
-      ,                                 ExpectedConditions.elementToBeClickable(this.addToCartItem))
-    ).then(() => this.addToCartItem.click());
+    await browser.wait(
+    ExpectedConditions.and(ExpectedConditions.titleIs('T-shirts - My Store')
+    ,                      ExpectedConditions.elementToBeClickable(this.addToCartItem)));
+    this.addToCartItem.click();
   }
 }

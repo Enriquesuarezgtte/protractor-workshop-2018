@@ -8,7 +8,7 @@ export class PaymentStepPage {
   }
 
   public async payByCheck(): Promise<void> {
-    browser.wait(ExpectedConditions.elementToBeClickable(this.payByCheckOption))
-      .then(() => this.payByCheckOption.click());
+    await browser.wait(ExpectedConditions.elementToBeClickable(this.payByCheckOption));
+    this.payByCheckOption.click();
   }
 }

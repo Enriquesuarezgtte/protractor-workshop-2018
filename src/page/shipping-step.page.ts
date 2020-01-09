@@ -10,12 +10,12 @@ export class ShippingStepPage {
   }
 
   public async acceptTermsOfService(): Promise<void> {
-    browser.wait(ExpectedConditions.presenceOf(this.termsOfServiceCheck))
-      .then(() => this.termsOfServiceCheck.click());
+    await browser.wait(ExpectedConditions.presenceOf(this.termsOfServiceCheck));
+    this.termsOfServiceCheck.click();
   }
 
   public async goToPaymentStepPage(): Promise<void> {
-    browser.wait(ExpectedConditions.elementToBeSelected(this.termsOfServiceCheck))
-      .then(() => this.shippingNavigation.click());
+    await browser.wait(ExpectedConditions.elementToBeSelected(this.termsOfServiceCheck));
+    this.shippingNavigation.click();
   }
 }

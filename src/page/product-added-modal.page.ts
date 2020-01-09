@@ -8,8 +8,8 @@ export class ProductAddedModalPage {
   }
 
   public async goToShoppingCartSummary(): Promise<void> {
-    browser.wait(ExpectedConditions.elementToBeClickable(this.tShirtCartModal))
-      .then(() => this.tShirtCartModal.click());
+    await browser.wait(ExpectedConditions.elementToBeClickable(this.tShirtCartModal));
+    this.tShirtCartModal.click();
   }
 
 }
