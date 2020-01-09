@@ -1,10 +1,10 @@
-import { $, ElementFinder, browser, ExpectedConditions } from 'protractor';
+import { ElementFinder, browser, ExpectedConditions, by, element } from 'protractor';
 
 export class AddressStepPage {
   private cartAddressNavigation: ElementFinder;
 
   constructor() {
-    this.cartAddressNavigation = $('#center_column > form > p > button > span');
+    this.cartAddressNavigation = element(by.name('processAddress'));
   }
 
   public async goToShippingStep(): Promise<void> {

@@ -1,4 +1,4 @@
-import { $, ElementFinder, browser, ExpectedConditions } from 'protractor';
+import { ElementFinder, browser, ExpectedConditions, by, element } from 'protractor';
 
 export class SignInCardStepPage {
   private emailField: ElementFinder;
@@ -6,9 +6,9 @@ export class SignInCardStepPage {
   private signInOption: ElementFinder;
 
   constructor() {
-    this.emailField = $('#email');
-    this.passwordField = $('#passwd');
-    this.signInOption = $('#SubmitLogin > span');
+    this.emailField = element(by.id('email'));
+    this.passwordField = element(by.id('passwd'));
+    this.signInOption = element(by.id('SubmitLogin'));
   }
   public async sendEmailandPasswKeys(emailKey: string, passwordKey: string): Promise<void> {
     await browser.wait(ExpectedConditions.and(ExpectedConditions.presenceOf(this.emailField),

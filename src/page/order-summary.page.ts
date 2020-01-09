@@ -4,7 +4,7 @@ export class OrderSummaryPage {
   private cartSummaryNavigation: ElementFinder;
 
   constructor() {
-    this.cartSummaryNavigation = $('.cart_navigation span');
+    this.cartSummaryNavigation = $('.cart_navigation .button-medium.standard-checkout');
   }
 
   public async goToLoginStep(): Promise<void> {

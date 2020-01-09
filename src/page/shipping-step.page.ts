@@ -1,12 +1,12 @@
-import { $, ElementFinder, browser, ExpectedConditions } from 'protractor';
+import { $, ElementFinder, browser, ExpectedConditions, element, by } from 'protractor';
 
 export class ShippingStepPage {
   private termsOfServiceCheck: ElementFinder;
   private shippingNavigation: ElementFinder;
 
   constructor() {
-    this.termsOfServiceCheck = $('#cgv');
-    this.shippingNavigation = $('#form > p > button > span');
+    this.termsOfServiceCheck = element(by.id('cgv'));
+    this.shippingNavigation = $('.cart_navigation .standard-checkout');
   }
 
   public async acceptTermsOfService(): Promise<void> {

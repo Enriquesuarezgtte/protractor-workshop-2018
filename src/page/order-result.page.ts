@@ -4,7 +4,7 @@ export class OrderResultPage {
   private orderResultAlert: ElementFinder;
 
   constructor() {
-    this.orderResultAlert = $('#center_column > div > p > strong');
+    this.orderResultAlert = $('.alert.alert-success');
   }
 
   public async getOrderResult(): Promise<String> {
