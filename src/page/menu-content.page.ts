@@ -1,10 +1,10 @@
-import { $, ElementFinder, browser, ExpectedConditions } from 'protractor';
+import { ElementFinder, browser, ExpectedConditions, element, by } from 'protractor';
 
 export class MenuContentPage {
   private tShirtMenu: ElementFinder;
 
   constructor() {
-    this.tShirtMenu = $('#block_top_menu .sf-menu > li:nth-last-child(1)');
+    this.tShirtMenu = element(by.css('.sf-menu > li > [title=T-shirts]'));
   }
 
   public async goToTshirtMenu(): Promise<void> {

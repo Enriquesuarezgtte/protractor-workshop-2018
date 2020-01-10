@@ -1,10 +1,10 @@
-import { $, ElementFinder, browser, ExpectedConditions } from 'protractor';
+import { ElementFinder, browser, ExpectedConditions, element, by } from 'protractor';
 
 export class ProductAddedModalPage {
   private tShirtCartModal: ElementFinder;
 
   constructor() {
-    this.tShirtCartModal = $('div.button-container > a.button-medium');
+    this.tShirtCartModal = element(by.css('div.button-container > a.button-medium'));
   }
 
   public async goToShoppingCartSummary(): Promise<void> {

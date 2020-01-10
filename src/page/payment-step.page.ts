@@ -4,7 +4,7 @@ export class PaymentStepPage {
   private payByCheckOption: ElementFinder;
 
   constructor() {
-    this.payByCheckOption = element(by.className('cheque'));
+    this.payByCheckOption = element(by.cssContainingText('.cheque', 'Pay by check'));
   }
 
   public async payByCheck(): Promise<void> {
