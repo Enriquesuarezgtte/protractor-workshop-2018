@@ -6,7 +6,7 @@ export class ShippingStepPage {
 
   constructor() {
     this.termsOfServiceCheck = $('#cgv');
-    this.shippingNavigation = $('#form > p > button > span');
+    this.shippingNavigation = $('[name=processCarrier]');
   }
 
   public async acceptTermsOfService(): Promise<void> {

@@ -8,7 +8,7 @@ export class SignInCardStepPage {
   constructor() {
     this.emailField = $('#email');
     this.passwordField = $('#passwd');
-    this.signInOption = $('#SubmitLogin > span');
+    this.signInOption = $('#SubmitLogin');
   }
   public async sendEmailandPasswKeys(emailKey: string, passwordKey: string): Promise<void> {
     await browser.wait(ExpectedConditions.and(ExpectedConditions.presenceOf(this.emailField),

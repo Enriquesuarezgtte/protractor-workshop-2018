@@ -9,7 +9,6 @@ import {
   ShippingStepPage,
   PaymentStepPage,
   BankPaymentPage,
-  OrderResultPage
 } from '../src/page';
 
 describe('Buy a t-shirt', () => {
@@ -24,7 +23,6 @@ describe('Buy a t-shirt', () => {
   const shippingStepPage: ShippingStepPage = new ShippingStepPage();
   const paymentStepPage: PaymentStepPage = new PaymentStepPage();
   const bankPaymentPage: BankPaymentPage = new BankPaymentPage();
-  const orderResultPage: OrderResultPage = new OrderResultPage();
 
   it('then should be bought a t-shirt', async () => {
     await browser.get('http://automationpractice.com/');
@@ -43,6 +41,6 @@ describe('Buy a t-shirt', () => {
     await shippingStepPage.goToPaymentStepPage();
     await paymentStepPage.payByCheck();
     await bankPaymentPage.confirmOrder();
-    await expect(orderResultPage.getOrderResult()).toBe('Your order on My Store is complete.');
+    await expect(bankPaymentPage.getOrderResult()).toBe('Your order on My Store is complete.');
   });
 });

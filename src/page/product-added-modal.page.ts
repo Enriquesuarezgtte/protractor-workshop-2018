@@ -4,7 +4,7 @@ export class ProductAddedModalPage {
   private tShirtCartModal: ElementFinder;
 
   constructor() {
-    this.tShirtCartModal = $('[style*="display: block;"] .button-container > a');
+    this.tShirtCartModal = $('div.button-container > a.button-medium');
   }
 
   public async goToShoppingCartSummary(): Promise<void> {
