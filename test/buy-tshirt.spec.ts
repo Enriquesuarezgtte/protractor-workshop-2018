@@ -42,7 +42,7 @@ describe('Given a web clothes store', () => {
         await signInCardStep.signIn();
       });
 
-      describe('and select default address', () => {
+      describe('and continuing process with default address', () => {
 
         beforeAll(async () => {
           const addressStepPage: AddressStepPage = new AddressStepPage();
