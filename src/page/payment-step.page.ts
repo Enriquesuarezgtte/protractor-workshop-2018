@@ -1,10 +1,10 @@
-import { ElementFinder, browser, ExpectedConditions, by, element } from 'protractor';
+import { $, ElementFinder, browser, ExpectedConditions } from 'protractor';
 
 export class PaymentStepPage {
   private payByCheckOption: ElementFinder;
 
   constructor() {
-    this.payByCheckOption = element(by.cssContainingText('.cheque', 'Pay by check'));
+    this.payByCheckOption = $('.payment_module > [title="Pay by check."]');
   }
 
   public async payByCheck(): Promise<void> {

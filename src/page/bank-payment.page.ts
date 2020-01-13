@@ -1,12 +1,12 @@
-import { ElementFinder, browser, ExpectedConditions, element, by } from 'protractor';
+import { $, ElementFinder, browser, ExpectedConditions } from 'protractor';
 
 export class BankPaymentPage {
   private confirmOrderNavigation: ElementFinder;
   private orderResultAlert: ElementFinder;
 
   constructor() {
-    this.confirmOrderNavigation = element(by.cssContainingText('#cart_navigation .button-medium', 'I confirm my order'));
-    this.orderResultAlert = element(by.css('#center_column > .alert.alert-success'));
+    this.confirmOrderNavigation = $('#cart_navigation > [type=submit]');
+    this.orderResultAlert = $('#center_column > .alert.alert-success');
   }
 
   public async confirmOrder(): Promise<void> {

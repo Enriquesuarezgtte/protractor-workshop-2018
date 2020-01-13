@@ -1,10 +1,10 @@
-import { ElementFinder, browser, ExpectedConditions, element, by } from 'protractor';
+import { $, ElementFinder, browser, ExpectedConditions } from 'protractor';
 
 export class ProductListPage {
   private addToCartItem: ElementFinder;
 
   constructor() {
-    this.addToCartItem = element(by.cssContainingText('a.ajax_add_to_cart_button', 'Add to cart'));
+    this.addToCartItem = $('.button-container > [title="Add to cart"]');
   }
 
   public async addTshirtToCart(): Promise<void> {

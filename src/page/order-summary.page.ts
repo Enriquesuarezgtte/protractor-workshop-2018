@@ -1,10 +1,10 @@
-import { ElementFinder, browser, ExpectedConditions, element, by } from 'protractor';
+import { $, ElementFinder, browser, ExpectedConditions } from 'protractor';
 
 export class OrderSummaryPage {
   private cartSummaryNavigation: ElementFinder;
 
   constructor() {
-    this.cartSummaryNavigation = element(by.cssContainingText('a.button-medium.standard-checkout', 'Proceed to checkout'));
+    this.cartSummaryNavigation = $('.cart_navigation > [title="Proceed to checkout"]');
   }
 
   public async goToLoginStep(): Promise<void> {
