@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "tslint --project tsconfig.json protractor/**/*.ts test/**/*.ts src/**/*.ts",
-    "clean": "rimraf dist",
+    "clean": "rimraf dist awesome-report",
     "build": "npm run lint && npm run clean && tsc",
     "test": "npm run test:headless",
     "postinstall": "webdriver-manager update --gecko false",
@@ -34,6 +34,7 @@
   "devDependencies": {
     "@types/jasminewd2": "^2.0.8",
     "@types/node": "^12.12.19",
+    "jasmine-awesome-report": "0.0.3",
     "jasmine-spec-reporter": "^4.2.1",
     "rimraf": "^3.0.0",
     "tslint": "^5.20.1",
