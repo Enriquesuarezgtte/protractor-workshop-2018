@@ -49,7 +49,7 @@ describe('Given a web clothes store', () => {
           await addressStepPage.goToShippingStep();
         });
 
-        describe('and Pay on bank', () => {
+        describe('and pay on bank', () => {
           let bankPaymentPage: BankPaymentPage;
 
           beforeAll(async () => {

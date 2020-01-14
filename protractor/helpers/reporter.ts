@@ -1,5 +1,5 @@
 import { SpecReporter } from 'jasmine-spec-reporter';
-const { AwesomeReport } = require('jasmine-awesome-report');
+import { AwesomeReport } from 'jasmine-awesome-report';
 
 export let reporter = () => {
   jasmine.getEnv().addReporter(new SpecReporter({
