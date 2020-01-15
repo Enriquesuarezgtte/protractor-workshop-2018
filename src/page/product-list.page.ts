@@ -14,9 +14,7 @@ export class ProductListPage {
   }
 
   private async findByProduct(productName: string): Promise<ElementFinder> {
-    return await this.products.filter(async (element) => {
-      return (await element.$('.right-block .product-name').getAttribute('title') === productName) ?
-        element : undefined;
-    }).first();
+    return await this.products.filter(async element =>
+      await element.$('.right-block .product-name').getAttribute('title') === productName).first();
   }
 }
