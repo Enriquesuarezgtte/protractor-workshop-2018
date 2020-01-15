@@ -2,7 +2,7 @@ import { browser } from 'protractor';
 import {
   MenuContentPage,
   ProductListPage,
-  ProductAddedModalPage,
+  ProductDetailPage,
   OrderSummaryPage,
   SignInCardStepPage,
   AddressStepPage,
@@ -22,12 +22,13 @@ describe('Given a web clothes store', () => {
     beforeAll(async () => {
       const menuContentPage: MenuContentPage = new MenuContentPage();
       const productListPage: ProductListPage = new ProductListPage();
-      const productAddedModalPage: ProductAddedModalPage = new ProductAddedModalPage();
+      const productDetailPage: ProductDetailPage = new ProductDetailPage();
       const orderSummary: OrderSummaryPage = new OrderSummaryPage();
-
+      const productoABuscar : string = 'Faded Short Sleeve T-shirts';
       await menuContentPage.goToTshirtMenu();
-      await productListPage.addTshirtToCart();
-      await productAddedModalPage.goToShoppingCartSummary();
+      await productListPage.selectProduct(productoABuscar);
+      await productDetailPage.addTShirtToCart();
+      await productDetailPage.goToShoppingCartSummary();
       await orderSummary.goToLoginStep();
     });
 
