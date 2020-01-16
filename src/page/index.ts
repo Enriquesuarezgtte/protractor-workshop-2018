@@ -1,6 +1,6 @@
 export { MenuContentPage } from './menu-content.page';
 export { ProductListPage } from './product-list.page';
-export { ProductAddedModalPage } from './product-added-modal.page';
+export { ProductDetailPage } from './product-detail.page';
 export { OrderSummaryPage } from './order-summary.page';
 export { SignInCardStepPage } from './sign-in-step.page';
 export { AddressStepPage } from './address-step.page';

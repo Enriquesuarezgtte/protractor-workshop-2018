@@ -1,16 +1,20 @@
-import { $, ElementFinder, browser, ExpectedConditions } from 'protractor';
+import { ElementFinder, $$, ElementArrayFinder, browser, ExpectedConditions } from 'protractor';
 
 export class ProductListPage {
-  private addToCartItem: ElementFinder;
+  private products: ElementArrayFinder;
 
   constructor() {
-    this.addToCartItem = $('.button-container > [title="Add to cart"]');
+    this.products = $$('.product-container');
   }
 
-  public async addTshirtToCart(): Promise<void> {
-    await browser.wait(
-    ExpectedConditions.and(ExpectedConditions.titleIs('T-shirts - My Store')
-    ,                      ExpectedConditions.elementToBeClickable(this.addToCartItem)));
-    await this.addToCartItem.click();
+  public async selectProduct(productName: string): Promise<void> {
+    const productFound: ElementFinder = await this.findByProduct(productName);
+    await browser.wait(ExpectedConditions.elementToBeClickable(productFound));
+    await productFound.$('.product-image-container img').click();
+  }
+
+  private async findByProduct(productName: string): Promise<ElementFinder> {
+    return await this.products.filter(async element =>
+      await element.$(`.right-block .product-name [title=${productName}]`)).first();
   }
 }
