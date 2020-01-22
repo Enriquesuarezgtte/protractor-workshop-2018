@@ -98,7 +98,7 @@ export class PersonalInformationPage {
   }
   private async submitForm() {
     await browser.wait(ExpectedConditions.elementToBeClickable(this.submit));
-    return await this.submit.click();
+    await this.submit.click();
   }
 
   public async fillForm(form: IPersonalInFormation) {
