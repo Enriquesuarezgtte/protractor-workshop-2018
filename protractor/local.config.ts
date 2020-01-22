@@ -17,7 +17,7 @@ export const config: Config = {
   capabilities : {
     browserName: 'chrome',
     chromeOptions: {
-      args: ['--disable-popup-blocking', '--no-default-browser-check', '--window-size=1920,1080'],
+      args: ['--disable-popup-blocking', '--no-default-browser-check', '--window-size=800,600'],
       prefs: { credential_enable_service: false }
     }
   }

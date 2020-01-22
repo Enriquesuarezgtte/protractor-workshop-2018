@@ -7,9 +7,9 @@ describe('Given a web page to practice form', () => {
   });
 
   describe('when fill personal information form', () => {
-
-    it('Locators', async () => {
-      const personalInformationPage: PersonalInformationPage = new PersonalInformationPage();
+    let personalInformationPage: PersonalInformationPage;
+    beforeAll(async () => {
+      personalInformationPage = new PersonalInformationPage();
       await personalInformationPage.hideAdsAndCookies();
       await personalInformationPage.fillForm({
         firstName: 'Alejandro',
@@ -25,7 +25,10 @@ describe('Given a web page to practice form', () => {
           'Switch Commands',
           'Wait Commands',
           'WebElement Commands']});
-      expect('as').toEqual('as');
+    });
+
+    it('Locators', async () => {
+      await expect(personalInformationPage.getPageTitle()).toBe('Practice Automation Form');
     });
   });
 });
