@@ -27,7 +27,7 @@ describe('Given a web page to practice form', () => {
           'WebElement Commands']});
     });
 
-    it('Locators', async () => {
+    it('then should have a title', async () => {
       await expect(personalInformationPage.getPageTitle()).toBe('Practice Automation Form');
     });
   });
