@@ -1,10 +1,14 @@
 import { $, ElementFinder, browser, ExpectedConditions } from 'protractor';
+import * as path from 'path';
+import * as fs from 'fs';
+import * as remote from 'selenium-webdriver/remote';
 
 interface IPersonalInFormation {
   firstName: string;
   lastName: string;
   sex: string;
   experience: number;
+  file: string;
   profession: string[];
   tools: string[];
   continent: string;
@@ -26,6 +30,7 @@ export class PersonalInformationPage {
   private bannerSuperior: ElementFinder;
   private titlePage: ElementFinder;
   private submit: ElementFinder;
+  private photo: ElementFinder;
 
   constructor() {
     this.firstNameField = $('[name=firstname]');
@@ -37,6 +42,7 @@ export class PersonalInformationPage {
     this.bannerSuperior = $('.cp-info-bar-body-overlay');
     this.titlePage = $('.wpb_wrapper > h1');
     this.submit = $('#submit');
+    this.photo = $('#photo');
   }
 
   public async hideAdsAndCookies(): Promise<void> {
@@ -74,6 +80,14 @@ export class PersonalInformationPage {
     }
   }
 
+  private async uploadFile(file: string) {
+    browser.setFileDetector(new remote.FileDetector());
+    const absolutePathFile = path.resolve(file);
+    if (fs.existsSync(absolutePathFile)) {
+      await this.photo.sendKeys(absolutePathFile);
+    }
+  }
+
   private async selectTools(tools: string[]) {
     for (const tool of tools) {
       this.toolsCheck = $(`input[name=tool][value="${tool}"]`);
@@ -101,15 +115,20 @@ export class PersonalInformationPage {
     await this.submit.click();
   }
 
-  public async fillForm(form: IPersonalInFormation) {
+  private async fillForm(form: IPersonalInFormation) {
     await this.fillFirstName(form.firstName);
     await this.fillLastName(form.lastName);
     await this.selectSex(form.sex);
     await this.selectExperience(form.experience);
     await this.selectProfession(form.profession);
+    await this.uploadFile(form.file);
     await this.selectTools(form.tools);
     await this.selectContinent(form.continent);
     await this.selectCommands(form.commands);
+  }
+
+  public async fillFormAndSubmit(form: IPersonalInFormation) {
+    await this.fillForm(form);
     await this.submitForm();
   }
 
