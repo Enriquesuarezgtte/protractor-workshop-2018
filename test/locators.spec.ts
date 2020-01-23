@@ -11,11 +11,12 @@ describe('Given a web page to practice form', () => {
     beforeAll(async () => {
       personalInformationPage = new PersonalInformationPage();
       await personalInformationPage.hideAdsAndCookies();
-      await personalInformationPage.fillForm({
+      await personalInformationPage.fillFormAndSubmit({
         firstName: 'Alejandro',
         lastName: 'Perdomo',
         sex: 'Male',
         experience: 7,
+        file: './resources/psl.jpg',
         profession: ['Automation Tester'],
         tools: ['Selenium Webdriver'],
         continent: 'South America',
