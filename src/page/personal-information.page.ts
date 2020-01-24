@@ -2,6 +2,7 @@ import { $, ElementFinder, browser, ExpectedConditions } from 'protractor';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as remote from 'selenium-webdriver/remote';
+import { DownloadService } from '../service/download.service';
 
 interface IPersonalInFormation {
   firstName: string;
@@ -9,6 +10,7 @@ interface IPersonalInFormation {
   sex: string;
   experience: number;
   file: string;
+  downloadfile?: boolean;
   profession: string[];
   tools: string[];
   continent: string;
@@ -31,6 +33,7 @@ export class PersonalInformationPage {
   private titlePage: ElementFinder;
   private submit: ElementFinder;
   private photo: ElementFinder;
+  private linkToFile: ElementFinder;
 
   constructor() {
     this.firstNameField = $('[name=firstname]');
@@ -43,6 +46,7 @@ export class PersonalInformationPage {
     this.titlePage = $('.wpb_wrapper > h1');
     this.submit = $('#submit');
     this.photo = $('#photo');
+    this.linkToFile = $('[href^="http://toolsqa.com/wp-content/uploads/2016/09/"]');
   }
 
   public async hideAdsAndCookies(): Promise<void> {
@@ -80,6 +84,13 @@ export class PersonalInformationPage {
     }
   }
 
+  private async download() {
+    await browser.wait(ExpectedConditions.presenceOf(this.linkToFile));
+    const fileToDownload: string = await this.linkToFile.getAttribute('href');
+    const downloadService: DownloadService = new DownloadService();
+    await downloadService.downloadFile(fileToDownload, 'excel-file.xlsx');
+  }
+
   private async uploadFile(file: string) {
     browser.setFileDetector(new remote.FileDetector());
     const absolutePathFile = path.resolve(file);
@@ -106,34 +117,34 @@ export class PersonalInformationPage {
     await browser.wait(ExpectedConditions.elementToBeClickable(this.commandsSelectables));
     for (const commandElement of commands) {
       await this.commandsSelectables.$$('option').filter(async commandPossible =>
-      await commandPossible.getText() === commandElement)
-      .each(async command => await command.click());
+        await commandPossible.getText() === commandElement)
+        .each(async command => await command.click());
     }
   }
-  private async submitForm() {
+  public async submitForm() {
     await browser.wait(ExpectedConditions.elementToBeClickable(this.submit));
     await this.submit.click();
   }
 
-  private async fillForm(form: IPersonalInFormation) {
+  public async fillForm(form: IPersonalInFormation) {
     await this.fillFirstName(form.firstName);
     await this.fillLastName(form.lastName);
     await this.selectSex(form.sex);
     await this.selectExperience(form.experience);
     await this.selectProfession(form.profession);
     await this.uploadFile(form.file);
+    form.downloadfile != null && form.downloadfile && await this.download();
     await this.selectTools(form.tools);
     await this.selectContinent(form.continent);
     await this.selectCommands(form.commands);
   }
 
-  public async fillFormAndSubmit(form: IPersonalInFormation) {
-    await this.fillForm(form);
-    await this.submitForm();
-  }
-
   public async getPageTitle(): Promise<string> {
     await browser.wait(ExpectedConditions.presenceOf(this.titlePage));
     return await this.titlePage.getText();
+  }
+  public async getFileName(): Promise<string> {
+    const path = (await this.photo.getWebElement().getAttribute('value')).replace('C:\\fakepath\\', '');
+    return path;
   }
 }
