@@ -3,7 +3,7 @@ import { reporter } from './helpers/reporter';
 
 export const config: Config = {
   framework: 'jasmine',
-  specs: ['../test/**/*.spec.js'],
+  specs: ['../test/locators.spec.js'],
   SELENIUM_PROMISE_MANAGER: false,
   onPrepare: () => {
     browser.ignoreSynchronization = true;
@@ -18,7 +18,8 @@ export const config: Config = {
     browserName: 'chrome',
     chromeOptions: {
       args: ['--disable-popup-blocking', '--no-default-browser-check', '--window-size=800,600'],
-      prefs: { credential_enable_service: false }
+      prefs: { credential_enable_service: false
+      }
     }
   }
 };

@@ -29,6 +29,8 @@
   },
   "homepage": "https://github.com/Enriquesuarezgtte/protractor-workshop-2018#readme",
   "dependencies": {
+    "es6-promise": "^4.2.8",
+    "isomorphic-fetch": "^2.2.1",
     "protractor": "^5.4.2"
   },
   "devDependencies": {
